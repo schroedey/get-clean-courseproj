@@ -7,7 +7,7 @@
 #############################################
 ## 0. Make sure we have the required packages
 require(dplyr)
-require(reshape2) # todo: remove if I don't use this
+require(reshape2)
 
 ##################################################################
 ## 1. Merge the training and the test sets to create one data set.
