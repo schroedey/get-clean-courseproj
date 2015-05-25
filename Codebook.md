@@ -17,32 +17,31 @@ to remove noise. Similarly, the acceleration signal was then separated into body
 (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
 Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals
-(tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ).
+(tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).
 
 Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ,
 fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
 
-These signals were used to estimate variables of the feature vector for each pattern:  
-'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
-(See below for how these are structured in the tidy data set.)
+These signals were used to estimate variables of the feature vector for each pattern: '-XYZ' is used to denote 3-axial
+signals in the X, Y and Z directions. (See below for how these are structured in the tidy data set.)
 
-tBodyAcc-XYZ
-tGravityAcc-XYZ
-tBodyAccJerk-XYZ
-tBodyGyro-XYZ
-tBodyGyroJerk-XYZ
-tBodyAccMag
-tGravityAccMag
-tBodyAccJerkMag
-tBodyGyroMag
-tBodyGyroJerkMag
-fBodyAcc-XYZ
-fBodyAccJerk-XYZ
-fBodyGyro-XYZ
-fBodyAccMag
-fBodyAccJerkMag
-fBodyGyroMag
-fBodyGyroJerkMag
+* tBodyAcc-XYZ
+* tGravityAcc-XYZ
+* tBodyAccJerk-XYZ
+* tBodyGyro-XYZ
+* tBodyGyroJerk-XYZ
+* tBodyAccMag
+* tGravityAccMag
+* tBodyAccJerkMag
+* tBodyGyroMag
+* tBodyGyroJerkMag
+* fBodyAcc-XYZ
+* fBodyAccJerk-XYZ
+* fBodyGyro-XYZ
+* fBodyAccMag
+* fBodyAccJerkMag
+* fBodyGyroMag
+* fBodyGyroJerkMag
 
 ### Tidy Data Set Data Transformations and Naming Conventions
 
@@ -53,27 +52,34 @@ separate dimensions, so there are separate columns for the X, Y, and Z values, i
 end of the column name.  The activity types, which were coded in the raw data, have been replaced with their descriptive
 names; they include the following six activities:
 
-WALKING
-WALKING_UPSTAIRS
-WALKING_DOWNSTAIRS
-SITTING
-STANDING
-LAYING
+* WALKING
+* WALKING_UPSTAIRS
+* WALKING_DOWNSTAIRS
+* SITTING
+* STANDING
+* LAYING
 
 In addition, in the tidy data set, these mean and standard deviation values are then averaged for each subject and activity
 type, and one record (row) is provided for each combination of subject and activity type.  This leads to a result set that is 
 structured into records as follows:
 
-subject: numeric identifier of the person who performed the activity while using the handset
-activity: a description of the activity type
-{measurements}: for each base measurement described above, the following exists in the tidy data set:
-{measurement}Mean: the average of the mean values for the given measurement, for the particular subject and activity
-{measurement}StdDev: the average of the standard deviation values for the given measurement, for the particular subject and activity
+* subject: numeric identifier of the person who performed the activity while using the handset
+* activity: a description of the activity type
+* {measurements}: for each base measurement described above, the following exists in the tidy data set:
+* {measurement}Mean: the average of the mean values for the given measurement, for the particular subject and activity
+* {measurement}StdDev: the average of the standard deviation values for the given measurement, for the particular subject and activity
 
 So, for example, for the measurement tBodyAcc-XYZ, you will find in the tidy data set the following:
-tBodyAccMean.X: the average value of the tBodyAcc mean measurement for the given subject and activity in the x axis
-tBodyAccMean.Y: the average value of the tBodyAcc mean measurement for the given subject and activity in the y axis
-tBodyAccMean.Z: the average value of the tBodyAcc mean measurement for the given subject and activity in the z axis
-tBodyAccStdDev.X: the average value of the tBodyAcc standard deviation measurement for the given subject and activity in the x axis
-tBodyAccStdDev.Y: the average value of the tBodyAcc standard deviation measurement for the given subject and activity in the y axis
-tBodyAccStdDev.Z: the average value of the tBodyAcc standard deviation measurement for the given subject and activity in the z axis
+* tBodyAccMean.X: the average value of the tBodyAcc mean measurement for the given subject and activity in the x axis
+* tBodyAccMean.Y: the average value of the tBodyAcc mean measurement for the given subject and activity in the y axis
+* tBodyAccMean.Z: the average value of the tBodyAcc mean measurement for the given subject and activity in the z axis
+* tBodyAccStdDev.X: the average value of the tBodyAcc standard deviation measurement for the given subject and activity in the x axis
+* tBodyAccStdDev.Y: the average value of the tBodyAcc standard deviation measurement for the given subject and activity in the y axis
+* tBodyAccStdDev.Z: the average value of the tBodyAcc standard deviation measurement for the given subject and activity in the z axis
+
+For the non-vectorized values (those representing simply a magnitude, and ending in "Mag" in the list above, there are no
+axial components, so, for example, for tBodyAccMag, you will find:
+* tBodyAccMagMean: the average value of the tBodyAccMag mean measurement for the given subject and activity
+* tBodyAccMagStdDev: the average value of the tBodyAccMag standard deviation measurement for the given subject and activity
+
+For more information on the original raw data, including where to find it and additional details and data not included in this data set, please refer to the README file.
